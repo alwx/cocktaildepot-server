@@ -1,0 +1,21 @@
+body {
+  font-family: sans-serif;
+  color: white;
+  background-color: black;
+  font-size: 11px;
+}
+
+a {
+  color: #ff4500;
+}
+
+#inner {
+  text-align: center;
+  width: 500px;
+  height: 150px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -75px;
+}
