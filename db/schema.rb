@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014100529) do
+ActiveRecord::Schema.define(:version => 20121024185851) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -32,13 +32,21 @@ ActiveRecord::Schema.define(:version => 20121014100529) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "categories", :force => true do |t|
-    t.string "name"
-    t.text   "description"
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "ingredients", :force => true do |t|
-    t.string "name"
-    t.text   "description"
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "ingredients_recipes", :id => false, :force => true do |t|
@@ -62,10 +70,13 @@ ActiveRecord::Schema.define(:version => 20121014100529) do
   create_table "recipes", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "photo"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "category_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "recipes_tags", :id => false, :force => true do |t|

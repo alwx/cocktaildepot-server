@@ -10,6 +10,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-vkontakte'
+
 gem 'jquery-rails'
 gem 'devise'
 gem 'rails_admin'
