@@ -1,5 +1,5 @@
 class Ingredient < ActiveRecord::Base
-  attr_accessible :name, :description, :delete_image, :image
+  attr_accessible :name, :description, :delete_image, :image, :is_main
   has_and_belongs_to_many :recipes
 
   has_attached_file :image, :styles => { :thumb => "150x150#" }

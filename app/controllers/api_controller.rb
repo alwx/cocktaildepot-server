@@ -9,7 +9,7 @@ class ApiController < ApplicationController
     data = Category.all
 
     respond_to do |format|
-      format.json { render :json => data.to_json(
+      format.html { render :json => data.to_json(
           :only => [:id, :name, :description],
           :methods => [:thumb_image]
       ) }
@@ -20,17 +20,17 @@ class ApiController < ApplicationController
     data = Tag.all
 
     respond_to do |format|
-      format.json { render :json => data.to_json(
+      format.html { render :json => data.to_json(
           :only => [:id, :name, :description]
       ) }
     end
   end
 
   def get_ingredients
-    data = Ingredient.all
+    data = Ingredient.where(:is_main => true).all
 
     respond_to do |format|
-      format.json { render :json => data.to_json(
+      format.html { render :json => data.to_json(
           :only => [:id, :name, :description],
           :methods => [:thumb_image]
       ) }
@@ -45,14 +45,29 @@ class ApiController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render :json => data.to_json(
-          :only => [:id, :name, :description],
+      format.html { render :json => data.to_json(
+          :only => [:id, :name],
           :methods => [:thumb_image],
           :include => {
               :category => { :only => [:id, :name] },
               :ingredients => { :only => [:id, :name] },
               :tags => { :only => [:id, :name] } }
           ) }
+    end
+  end
+
+  def get_single_recipe
+    data = Recipe.find_by_id(params[:id])
+
+    respond_to do |format|
+      format.html { render :json => data.to_json(
+          :only => [:id, :name, :description],
+          :methods => [:full_image],
+          :include => {
+              :category => { :only => [:id, :name] },
+              :ingredients => { :only => [:id, :name] },
+              :tags => { :only => [:id, :name] } }
+      ) }
     end
   end
 end

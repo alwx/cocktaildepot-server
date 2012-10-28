@@ -6,6 +6,7 @@ Cocktaildepot::Application.routes.draw do
   match 'api/categories' => 'api#get_categories'
   match 'api/tags' => 'api#get_tags'
   match 'api/ingredients' => 'api#get_ingredients'
+  match 'api/recipes/:id' => 'api#get_single_recipe'
   match 'api/recipes' => 'api#get_recipes'
   match 'api/value/:value' => 'api#get_value'
 end

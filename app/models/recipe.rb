@@ -17,4 +17,8 @@ class Recipe < ActiveRecord::Base
   def thumb_image
     image.url(:thumb)
   end
+
+  def full_image
+    image.url(:full)
+  end
 end
